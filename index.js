@@ -1,15 +1,41 @@
-function hasTargetSum(array, target) {
-  // Write your algorithm here
+// function hasTargetSum(array, target) {
+//   // Write your algorithm here
+//   if (array.length < 2) {
+//     return false
+//   }
+//   for (let i = 0; i < array.length; i++){
+//     for(let j = i + 1; j < array.length; j++){
+//       if (array[i] + array[j] === target){
+//         return true
+//       }
+//     }
+//   }
+//   return false
+// }
+
+function hasTargetSum(array, target){
+  const seeNumbers = {}
+  for (const number of array){
+    const complement = target - number
+    if (seeNumbers[complement]){
+      return true
+    }
+    seeNumbers[number] = true
+  }
+  return false
 }
+
 
 /* 
   Write the Big O time complexity of your function here
+  Time - Quadratic 
+  Space - O(n)
 */
 
 /* 
   Add your pseudocode here
-*/
-
+*/ 
+// If only one number in array, return false. Add the first number to the second number, then add the first number to the third number, then the 4th, etc. Then move to the 2nd number, add to the third number, etc. Each time compare it to the target number. Test case - negative numbers. 
 /*
   Add written explanation of your solution here
 */
